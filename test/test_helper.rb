@@ -4,7 +4,7 @@ require "rails/test_help"
 
 class ActiveSupport::TestCase
   # Run tests in parallel with specified workers
-  parallelize(workers: :number_of_processors, with: :threads)
+  # parallelize(workers: :number_of_processors, with: :threads)
 
   # Setup all fixtures in test/fixtures/*.yml for all tests in alphabetical order.
   fixtures :all
@@ -23,8 +23,8 @@ class ActiveSupport::TestCase
     remember_me = options[:remember_me] || '0'
     if integration_test?
       post 'http://127.0.0.1:3000/login', params: { session: { email:       user.email,
-                                  password:    password,
-                                  remember_me: remember_me } }
+                                                               password:    password,
+                                                               remember_me: remember_me } }
     else
       session[:user_id] = user.id
     end
